@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmhmmwwajvqmn"]
+
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_akdm6"]
+[ext_resource type="Script" path="res://scripts/setting.gd" id="1_x3u4c"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_vtqto"]
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x3u4c")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -0.128006
+offset_right = 101.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_akdm6")
+theme_override_font_sizes/font_size = 16
+text = "Host New Game"
+
+[node name="Client" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vtqto")
+theme_override_font_sizes/font_size = 16
+text = "Join Game"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Client" to="." method="_on_client_pressed"]
