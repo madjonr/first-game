@@ -10,12 +10,19 @@ const JUMP_VELOCITY = -300.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction = 1
 var do_jump = false
-var _is_on_floor = false
+var _is_on_floor = true
 
 @export var player_id:int = 1:
 	set(id):
 		player_id = id
 		%InputSynchronizer.set_multiplayer_authority(id)
+
+
+func _ready():
+	if multiplayer.get_unique_id() == player_id:
+		$Camera2D.make_current()
+	else :
+		$Camera2D.enabled = false
 
 
 func _apply_animations(delta):
@@ -26,7 +33,7 @@ func _apply_animations(delta):
 		animated_sprite.flip_h = true
 	
 	# Play animations
-	if is_on_floor():
+	if _is_on_floor:
 		if direction == 0:
 			animated_sprite.play("idle")
 		else:
@@ -43,9 +50,10 @@ func _apply_movement_from_input(delta):
 	# Handle jump.
 	if do_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		do_jump = false
 
 	# Get the input direction: -1, 0, 1
-	var direction = %InputSynchronizer.input_direction
+	direction = %InputSynchronizer.input_direction
 	# Apply movement
 	if direction:
 		velocity.x = direction * SPEED
@@ -60,5 +68,8 @@ func _physics_process(delta):
 	# 服务端（验证输入的有效性后）将动作同步回客户端，客户端再来显示所有移动效果。
 	# 所以这里就是要判断is_server的原因
 	if multiplayer.is_server():
+		_is_on_floor = is_on_floor()
 		_apply_movement_from_input(delta)
-	_apply_animations(delta)
+		
+	if not multiplayer.is_server() || SystemManager.host_mode_enabled:
+		_apply_animations(delta)
