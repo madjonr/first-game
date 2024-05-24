@@ -10,6 +10,7 @@ const SERVER_PORT = 2080
 
 var score = 0
 var _player_spawn_node
+var host_mode_enabled = false
 
 
 func _ready():
@@ -30,6 +31,8 @@ func add_point():
 
 func become_host():
 	_player_spawn_node = get_tree().current_scene.get_node("Players")
+	
+	SystemManager.host_mode_enabled = true
 	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)

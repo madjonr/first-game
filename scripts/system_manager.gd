@@ -4,6 +4,7 @@ extends Node
 var game_scene_file = "res://scenes/game.tscn"
 
 var peer_type
+var host_mode_enabled = false
 enum Peer_type {HOST, CLIENT}
 
 
