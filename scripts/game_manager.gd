@@ -10,7 +10,7 @@ const SERVER_PORT = 2080
 
 var score = 0
 var _player_spawn_node
-var host_mode_enabled = false
+
 
 
 func _ready():

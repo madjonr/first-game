@@ -521,8 +521,9 @@ position = Vector2(584, -108)
 [node name="Platform" parent="Platforms" instance=ExtResource("3_cmfc3")]
 position = Vector2(32, 9)
 
-[node name="Platform2" parent="Platforms" instance=ExtResource("3_cmfc3")]
+[node name="Platform2" parent="Platforms" node_paths=PackedStringArray("animation_player_optional") instance=ExtResource("3_cmfc3")]
 position = Vector2(370, 52)
+animation_player_optional = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
 libraries = {
