@@ -458,19 +458,17 @@ _data = {
 script = ExtResource("1_l4ihi")
 player_scene = ExtResource("1_rbmkf")
 
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ScoreLabel" type="Label" parent="GameManager"]
-offset_left = 513.0
-offset_top = -144.0
-offset_right = 618.0
-offset_bottom = -125.0
-theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_top = 6.0
+offset_right = 146.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.905916, 0.347655, 0.42782, 1)
 theme_override_fonts/font = ExtResource("2_nlliu")
-theme_override_font_sizes/font_size = 8
-text = "You collected X coins."
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+text = " 0 coins"
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -515,6 +513,12 @@ position = Vector2(795, -25)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("4_28cek")]
 position = Vector2(584, -108)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("4_28cek")]
+position = Vector2(569, -108)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("4_28cek")]
+position = Vector2(552, -108)
 
 [node name="Platforms" type="Node" parent="."]
 

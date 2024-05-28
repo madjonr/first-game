@@ -4,7 +4,7 @@ extends Node
 const SERVER_IP = "127.0.0.1"
 const SERVER_PORT = 2080
 
-@onready var score_label = $GameManager/ScoreLabel
+@onready var score_label = $UI/ScoreLabel
 @onready var coins_node = $Coins
 @export var player_scene: PackedScene
 
@@ -26,7 +26,7 @@ func _ready():
 
 func add_point():
 	score += 1
-	score_label.text = "You collected " + str(score) + " coins."
+	score_label.text = str(score) + " coins"
 
 
 func become_host():
