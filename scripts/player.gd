@@ -5,6 +5,8 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite = $AnimatedSprite2D
+#@onready var tile_map = $"../../TileMap"
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -73,3 +75,17 @@ func _physics_process(delta):
 		
 	if not multiplayer.is_server() || SystemManager.host_mode_enabled:
 		_apply_animations(delta)
+	
+
+
+
+#func test():
+	#var positon = get_global_position()
+	##print(positon)
+	#var position_in_tilemap = tile_map.map_to_local(positon)
+	#print(position_in_tilemap)
+	#var cell_position = tile_map.get_coords_for_body_rid(1, Vector2(position_in_tilemap.x, position_in_tilemap.y+16))
+	##if cell_position != -1:
+	#print(cell_position)
+	##print(tile_map.get_coords_for_body_rid(get_rid()))
+	##print(tile_map.get_layer_name(1))
